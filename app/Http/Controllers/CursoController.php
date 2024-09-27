@@ -11,7 +11,7 @@ class CursoController extends Controller
      */
     public function index()
     {
-        return "Bienvenido a la página cursos";
+        return view('cursos.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class CursoController extends Controller
      */
     public function create()
     {
-        return "En esta página podrás crear un curso";
+        return view('cursos.create');
     }
 
     /**
@@ -35,7 +35,7 @@ class CursoController extends Controller
      */
     public function show(string $curso)
     {
-        return "Bienvenido al curso: $curso";
+        return view('cursos.show', ['curso' => $curso]);
     }
 
     /**
