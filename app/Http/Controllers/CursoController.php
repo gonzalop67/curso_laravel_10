@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Curso;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
@@ -11,7 +12,9 @@ class CursoController extends Controller
      */
     public function index()
     {
-        return view('cursos.index');
+        $cursos = Curso::paginate();
+
+        return view('cursos.index', compact('cursos'));
     }
 
     /**
@@ -33,9 +36,10 @@ class CursoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $curso)
+    public function show(string $id)
     {
-        return view('cursos.show', ['curso' => $curso]);
+        $curso = Curso::find($id);
+        return view('cursos.show', compact('curso'));
     }
 
     /**
