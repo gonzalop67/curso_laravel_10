@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -42,4 +44,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * mutadores y accesores
+     */
+    protected function name(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => ucwords($value), // accesor: retorna las primeras letras en mayúscula
+            set: function ($value) { // mutador: convierte en minúsculas el valor ingresado en el campo name
+                return strtolower($value);
+            }
+        );
+    }
 }
