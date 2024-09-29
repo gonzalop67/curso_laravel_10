@@ -33,15 +33,15 @@ class CursoController extends Controller
     {
         $curso = Curso::create($request->all());
 
-        return redirect()->route('cursos.show', $curso->id);
+        return redirect()->route('cursos.show', $curso);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Curso $curso)
     {
-        $curso = Curso::find($id);
+        // $curso = Curso::find($id);
         return view('cursos.show', compact('curso'));
     }
 
@@ -62,6 +62,7 @@ class CursoController extends Controller
     {
         $request->validate([
             'name' => 'required|min:3',
+            'slug' => 'required|unique:cursos,slug,' . $curso->id,
             'descripcion' => 'required',
             'categoria' => 'required'
         ]);

@@ -10,7 +10,7 @@
     <p><strong>Categoria: </strong>{{ $curso->categoria }}</p>
     <p><strong>Descripcion: </strong>{{ $curso->descripcion }}</p>
 
-    <form action="{{ route('curso.destroy', $curso) }}" method="POST">
+    <form action="{{ route('cursos.destroy', $curso) }}" method="POST">
         @csrf
         @method('DELETE')
 

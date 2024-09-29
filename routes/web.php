@@ -24,7 +24,7 @@ Route::get('/', HomeController::class);
     Route::get('cursos/{id}', 'show')->name('cursos.show');
     Route::get('cursos/{id}/edit', 'edit')->name('cursos.edit');
     Route::put('cursos/{curso}', 'update')->name('cursos.update');
-    Route::delete('cursos/{curso}', 'destroy')->name('curso.destroy');
+    Route::delete('cursos/{curso}', 'destroy')->name('cursos.destroy');
 }); */
 
 Route::resource('cursos', CursoController::class);
